@@ -1,0 +1,24 @@
+{
+    "name": "tonyfarney/fixed-length-file-handler",
+    "type": "library",
+    "description": "Ease to use fixed length (positional) file Reader and Writer for PHP 7.1+",
+    "keywords": ["fixed", "length", "file", "positional", "reader", "writer", "handler"],
+    "homepage": "https://github.com/tonyfarney/FixedLengthFileHandler",
+    "authors": [
+        {
+            "name": "Tony Farney",
+            "email": "tonyfarney@gmail.com",
+            "homepage": "https://www.linkedin.com/in/tonyfarney/",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.1|^8.0"
+    },
+    "autoload": {
+        "psr-4" : {
+            "FixedLengthFileHandler\\" : "src/"
+        }
+    }
+}
