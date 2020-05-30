@@ -12,7 +12,7 @@ class FixedLengthFileWriter extends FixedLengthFileHandler {
 	}
 
 	/**
-	 * Cleans all configurations and informations loaded
+	 * Cleans all configurations and informations generated
 	 * @return self
 	 */
 	public function reset(): parent {
@@ -22,7 +22,7 @@ class FixedLengthFileWriter extends FixedLengthFileHandler {
 	}
 	
 	/**
-	 * Save the loaded lines to a file
+	 * Save the generated lines to a file
 	 * @param string $file File to save to
 	 * @return boolean
 	 */
@@ -40,16 +40,8 @@ class FixedLengthFileWriter extends FixedLengthFileHandler {
 	/**
 	 * @return string The generated file content
 	 */
-	public function getGeneratedFileContent(): array {
+	public function getGeneratedFileContent(): string {
 		return implode($this->getLineDelimiter(), $this->getGeneratedLines());
-	}
-
-	/**
-	 * return array Associative array containing the lines loaded and it's fields.
-	 * @see self::loadLine[]
-	 */
-	public function getLoadedLines() {
-		return $this->_loadedLines;
 	}
 
 	/**
@@ -84,8 +76,8 @@ class FixedLengthFileWriter extends FixedLengthFileHandler {
 		$line = '';
 		foreach ($this->getLine($lineId) as $fieldConfig) {
 			$line .= $this->getProcessedFieldValue(
-				$fieldConfig, $data[$fieldConfig['id']] ?? null, ['_rawLineData' => $data]
-			) ;
+				$fieldConfig, $data[$fieldConfig['id']] ?? '', ['_rawLineData' => $data]
+			);
 		}
 		$this->_generatedLines[] = $line;
 		return $line;
