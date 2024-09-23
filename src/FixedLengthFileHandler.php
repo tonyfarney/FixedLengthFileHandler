@@ -13,6 +13,7 @@ abstract class FixedLengthFileHandler {
 	/**
 	 * Resets and sets a new configuration
 	 * @param array $lines The index is the line ID and value the fields configuration
+         * @return static
 	 * @throws FixedLengthFileException
 	 */
 	public function setLines(array $lines): self {
@@ -27,7 +28,7 @@ abstract class FixedLengthFileHandler {
 	 * Adds the definition for a line type
 	 * @param string $lineId ID for the line type
 	 * @param CampoPosicional[] $fields
-	 * @return self
+	 * @return static
 	 * @throws FixedLengthFileException
 	 */
 	public function addLine($lineId, array $fields): self {
@@ -45,7 +46,7 @@ abstract class FixedLengthFileHandler {
 	/**
 	 * Removes a line configuration. None exception is thrown if the line doesn't exists
 	 * @param string $lineId
-	 * @return self
+	 * @return static
 	 * @throws FixedLengthFileException
 	 */
 	public function removeLine(string $lineId): self {
@@ -60,7 +61,7 @@ abstract class FixedLengthFileHandler {
 	 * Removes a field
 	 * @param string $lineId
 	 * @param string $fieldId
-	 * @return self
+	 * @return static
 	 * @throws FixedLengthFileException
 	 */
 	public function removeField(string $lineId, string $fieldId): self {
@@ -103,7 +104,7 @@ abstract class FixedLengthFileHandler {
 	 *   ... any other information you want
 	 * ]
 	 * @param string $insertBeforeFieldId If null or not provided, will insert at the end of the line
-	 * @return self
+	 * @return static
 	 * @throws FixedLengthFileException
 	 */
 	public function addField(string $lineId, array $newFieldConfig, string $insertBeforeFieldId = null): self {
@@ -177,7 +178,7 @@ abstract class FixedLengthFileHandler {
 	 * field configuration and the raw value. The function signature must be as follow:
 	 *   function (array $fieldConfig, $rawValue, FixedLengthFile(Reader|Writer) $this, array $extraInfo): mixed;
 	 * @param callable $callback
-	 * @return self
+	 * @return static
 	 */
 	public function setFieldProcessorCallback(callable $callback): self {
 		$this->_fieldProcessorCallback = $callback;
